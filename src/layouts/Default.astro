@@ -1,0 +1,13 @@
+---
+const { data } = Astro.props;
+const { Content } = await data.render();
+---
+
+<section class="section">
+  <h2>Cik jigur</h2>
+  <div class="container">
+    <div class="content">
+      <Content />
+    </div>
+  </div>
+</section>

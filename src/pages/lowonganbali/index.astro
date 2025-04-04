@@ -1,0 +1,94 @@
+---
+import PageHeaderCareer from "@/components/PageHeaderCareer.astro";
+import config from "@/config/config.json";
+
+import Base from "@/layouts/Base.astro";
+import CareerBenefits from "@/layouts/function-components/CareerBenefits";
+import JobPosts from "@/layouts/function-components/JobPosts";
+import Cta from "@/layouts/partials/Cta.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { getTaxonomy } from "@/lib/taxonomyParser.astro";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+
+import Pagination from "@/layouts/components/Pagination.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
+
+const careerIndex = (await getEntry(
+  "lowongan",
+  "-index"
+)) as CollectionEntry<"lowongan">; // ini artinya paksa agar getEntry sebagai CollectionEntry nya lowongan
+
+const { benefits, career, image } = careerIndex.data;
+const categories = await getTaxonomy("lowongan", "categories");
+const jobPosts = await getSinglePage("lowongan");
+const page_data = {
+  title: careerIndex.data.title,
+  page_title: careerIndex.data.page_title,
+  content: careerIndex.body,
+};
+
+const posts = await getSinglePage("lowongan");
+
+const sortedPosts = sortByDate(jobPosts);
+const featuredPost = sortedPosts.filter((item) => item.data.featured);
+const recentPost = sortedPosts.filter((item) => !item.data.featured);
+const totalPages = Math.ceil(recentPost.length / config.settings.pagination);
+const currentPosts = recentPost.slice(0, config.settings.pagination);
+---
+
+<Base
+  title={careerIndex.data.title}
+  meta_title={careerIndex.data.meta_title}
+  description={careerIndex.data.description}
+  image={careerIndex.data.image}
+>
+  <section class="page-hero pb-10 pt-10">
+    <div class="container hidden">
+      <PageHeaderCareer page_data={page_data} />
+
+      <div class="col-12 mt-14">
+        <div class="relative">
+          <Image
+            src={image!}
+            alt=""
+            height={532}
+            width={1044}
+            class="w-full rounded"
+          />
+          <Image
+            class="lg:h-[150px] lg:w-[150px] absolute -left-[8%] bottom-[12%] z-[-1] h-20 w-20 -rotate-90 lg:-left-8 lg:bottom-4"
+            src="/images/shape.png"
+            height={130}
+            width={130}
+            alt=""
+          />
+          <Image
+            class="absolute -bottom-4 -right-4 z-[-1] h-16 w-16 -rotate-90"
+            src="/images/shape.png"
+            alt=""
+            height={64}
+            width={64}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="hidden">
+    <CareerBenefits benefits={benefits} client:load />
+  </div>
+  <JobPosts
+    client:load
+    categories={categories}
+    career={career ?? { title: "Default Title", subtitle: "Default Subtitle" }}
+    posts={currentPosts}
+  />
+
+  <Pagination
+    section={"lowonganbali"}
+    currentPage={1}
+    totalPages={totalPages}
+  />
+  <Cta />
+</Base>

@@ -1,0 +1,51 @@
+---
+import Base from "@/layouts/Base.astro";
+import Cta from "@/layouts/partials/Cta.astro";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+
+const publicholiday = (await getEntry(
+  "publicholiday",
+  "-index"
+)) as CollectionEntry<"publicholiday">;
+---
+
+<Base
+  title={publicholiday.data.title}
+  meta_title={publicholiday.data.meta_title}
+  description={publicholiday.data.description}
+>
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="w-4/6">
+          <div class="content">
+            <table>
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama</th>
+                  <th>Tanggal libur</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Hari kartini</td>
+                  <td>Senin 2 sept</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Hari New Year</td>
+                  <td>Senin 1 Januari</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="w-2/6">sewain mobil</div>
+      </div>
+    </div>
+  </section>
+  <Cta />
+</Base>

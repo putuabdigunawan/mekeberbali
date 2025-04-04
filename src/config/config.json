@@ -1,0 +1,44 @@
+{
+  "site": {
+    "title": "Mekeber Bali",
+    "base_url": "https://mekeber.com",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo": "/images/logo/mekeber-logo.svg",
+    "logo_width": "145",
+    "logo_height": "68",
+    "logo_text": "Mekeber",
+    "tag": "Buat kamu jadi lebih baik versi kamu"
+  },
+
+  "settings": {
+    "pagination": 8,
+    "summary_length": 100
+  },
+
+  "call_to_action": {
+    "title": "Helping teams in the world with focus",
+    "description": "Lorem ipsum dolor sit sed dmi amet, consectetur adipiscing. Cdo tellus, sed condimentum volutpat.",
+    "button": {
+      "label": "Download The Theme",
+      "link_to": "https://themefisher.com/astro-themes/pinwheel-astro"
+    }
+  },
+
+  "params": {
+    "footer_description": "Lorem ipsum dolor sit sed dmi amet, consectetur adipiscing. Cdo tellus, sed condimentum volutpat.",
+    "email": "info@andromeda.io",
+    "location": "2118 Thornridge Cir. Syracuse, Connecticut 35624",
+    "text_pasang": "Pasang iklan lowongan disini gratis, jika kantor anda ingin mengirimkan lowongan, silahkan pasang pada admin kami mekeberbali@gmail.com",
+    "phone": "+704-555-0127",
+    "contact_form_action": "#",
+    "copyright": "Copyright © 2025 Mekeber Bali"
+  },
+
+  "metadata": {
+    "meta_author": "Themefisher",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "membantu memperlebar bisnis anda bersama mekeber bali"
+  }
+}

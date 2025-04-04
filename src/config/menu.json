@@ -1,0 +1,77 @@
+{
+  "main": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Bali",
+      "url": "/bali"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog"
+    },
+    {
+      "name": "Bisnis",
+      "url": "/bisnis"
+    },
+    {
+      "name": "Lowongan",
+      "url": "/lowongan"
+    }
+    
+  ],
+
+  "footer": [
+    {
+      "name": "About",
+      "url": "/about"
+    },
+    {
+      "name": "Contact",
+      "url": "/contact"
+    },
+    {
+      "name": "Careers",
+      "url": "/careers"
+    },
+    {
+      "name": "Elements",
+      "url": "/elements"
+    },
+    {
+      "name": "Integrations",
+      "url": "/integrations"
+    },
+
+    {
+      "name": "Pricing",
+      "url": "/pricing"
+    },
+    {
+      "name": "How It Works",
+      "url": "/how-it-works"
+    },
+    {
+      "name": "Features",
+      "url": "/features"
+    },
+    {
+      "name": "Sign In",
+      "url": "/signin"
+    },
+    {
+      "name": "Sign Up",
+      "url": "/signup"
+    },
+    {
+      "name": "Changelog",
+      "url": "/changelog"
+    },
+    {
+      "name": "Support",
+      "url": "/support"
+    }
+  ]
+}
