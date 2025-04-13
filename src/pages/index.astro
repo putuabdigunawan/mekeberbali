@@ -1,9 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
-import Banner from "@/layouts/components/Banner.astro";
-import KeyFeatures from "@/layouts/components/KeyFeatures.astro";
-import Service from "@/layouts/components/Service.astro";
-import Testimonial from "@/layouts/components/Testimonial.astro";
+import BannerTop from "@/layouts/components/BannerTop.astro";
 import Cta from "@/layouts/partials/Cta.astro";
 import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
@@ -16,9 +13,9 @@ const { banner, key_features, service, testimonial } = homepage.data;
 ---
 
 <Base>
-  <Banner banner={banner} />
-  <KeyFeatures key_features={key_features} />
-  <Service service={service} />
-  <Testimonial testimonial={testimonial} />
-  <Cta />
+  <BannerTop />
+
+  <div class="hidden">
+    <Cta />
+  </div>
 </Base>

@@ -1,6 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
-import Cta from "@/layouts/partials/Cta.astro";
+import CtaLowongan from "@/layouts/partials/CtaLowongan.astro";
 import config from "@/config/config.json";
 import CardJobBali from "@/layouts/function-components/CardJobBali";
 import Pagination from "@/layouts/components/Pagination.astro";
@@ -9,9 +9,10 @@ import { sortByDate1 } from "@/lib/utils/sortFunctions";
 // ambil static paths
 export async function getStaticPaths() {
   try {
-    const response = await fetch(
-      "https://firstoffice.bliputuabdi.com/api/bali/lowongan"
-    );
+    // const response = await fetch(
+    //   "https://firstoffice.bliputuabdi.com/api/bali/lowongan"
+    // );
+    const response = await fetch("http://127.0.0.1:8000/api/bali/lowongan/");
     if (!response.ok) {
       console.error(
         "Error fetching lowongan untuk getStaticPaths:",
@@ -40,9 +41,10 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const response = await fetch(
-  "https://firstoffice.bliputuabdi.com/api/bali/lowongan"
-);
+// const response = await fetch(
+//   "https://firstoffice.bliputuabdi.com/api/bali/lowongan"
+// );
+const response = await fetch("http://127.0.0.1:8000/api/bali/lowongan/");
 const result = await response.json();
 const lowongan = result.data; // Asumsi array lowongan ada di dalam properti 'data'
 
@@ -97,5 +99,5 @@ const page_data = {
     totalPages={totalPages}
     currentPage={currentPage}
   />
-  <Cta />
+  <CtaLowongan />
 </Base>

@@ -13,7 +13,7 @@
   },
 
   "settings": {
-    "pagination": 8,
+    "pagination": 10,
     "summary_length": 100
   },
 

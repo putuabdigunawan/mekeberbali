@@ -1,23 +1,15 @@
 ---
-import PageHeaderCareer from "@/components/PageHeaderCareer.astro";
-import config from "@/config/config.json";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 
 import Base from "@/layouts/Base.astro";
-import CareerBenefits from "@/layouts/function-components/CareerBenefits";
-import JobPosts from "@/layouts/function-components/JobPosts";
-import Cta from "@/layouts/partials/Cta.astro";
-import { getSinglePage } from "@/lib/contentParser.astro";
-import { getTaxonomy } from "@/lib/taxonomyParser.astro";
-import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
-import { getEntry } from "astro:content";
+import CtaLowongan from "@/layouts/partials/CtaLowongan.astro";
 
 export async function getStaticPaths() {
   try {
-    const response = await fetch(
-      "https://firstoffice.bliputuabdi.com/api/bali/lowongan"
-    );
+    // const response = await fetch(
+    //   "https://firstoffice.bliputuabdi.com/api/bali/lowongan"
+    // );
+    const response = await fetch("http://127.0.0.1:8000/api/bali/lowongan/");
     if (!response.ok) {
       console.error(
         "Error fetching lowongan untuk getStaticPaths:",
@@ -37,67 +29,31 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
+// const responseDetail = await fetch(
+//   `https://firstoffice.bliputuabdi.com/api/bali/lowongan/${slug}`
+// );
 const responseDetail = await fetch(
-  `https://firstoffice.bliputuabdi.com/api/bali/lowongan/${slug}`
+  `http://127.0.0.1:8000/api/bali/lowongan/${slug}`
 );
 const ambil = await responseDetail.json();
 const lowonganDetail = ambil.data;
-//console.log(lowonganDetail);
-
-// Fungsi untuk mengubah teks dengan pemisah baris menjadi HTML (paragraf)
-function plainTextToHtml(text: string): string {
-  if (!text) {
-    return "";
-  }
-  const lines = text.split("\n");
-  let htmlElements = [];
-  let inList = false;
-  let currentListItems = [];
-
-  for (const line of lines) {
-    const trimmedLine = line.trim();
-    if (trimmedLine.startsWith("- ") || trimmedLine.startsWith(". ")) {
-      //awal nya itu - atau titik
-      const listItemText = trimmedLine.substring(2).trim(); // Hapus marker dan spasi awal
-      currentListItems.push(`<li>${listItemText}</li>`);
-      inList = true;
-    } else {
-      if (inList) {
-        htmlElements.push(`<ul>${currentListItems.join("")}</ul>`);
-        currentListItems = [];
-        inList = false;
-      }
-      if (trimmedLine) {
-        // Hanya tambahkan paragraf jika baris tidak kosong
-        htmlElements.push(`<p>${trimmedLine}</p>`);
-      }
-    }
-  }
-
-  // Tambahkan list terakhir jika masih ada item di dalamnya
-  if (inList) {
-    htmlElements.push(`<ul>${currentListItems.join("")}</ul>`);
-  }
-
-  return htmlElements.join("");
-}
-
-//const kontenHTML = plainTextToHtml(lowonganDetail.content);
-const kontenHTML = lowonganDetail.content;
-//console.log(kontenHTML);
 ---
 
-<Base>
+<Base
+  title="`${lowonganDetail.title}` + | Mekeber"
+  meta_title={lowonganDetail.meta_title}
+  description={lowonganDetail.description}
+>
   <section>
-    <div class="container">
-      <div class="content">
+    <div class="container py-8 -mb-10">
+      <div class="content mt-5 rounded-xl bg-white p-5 shadow-lg">
         {
           lowonganDetail ? (
             <>
-              <h1 class="mt-5 text-center">{lowonganDetail.title}</h1>
-              <div set:html={kontenHTML} />
+              <h1 class="mt-5 text-center px-3">{lowonganDetail.title}</h1>
+              <div set:html={lowonganDetail.content} />
 
-              <p>Lokasinya di: {lowonganDetail.location}</p>
+              <p>Lokasi: {lowonganDetail.location}</p>
               {/* Tambahkan detail lowongan lainnya di sini */}
             </>
           ) : (
@@ -117,5 +73,5 @@ const kontenHTML = lowonganDetail.content;
     </div>
   </section>
 
-  <Cta />
+  <CtaLowongan />
 </Base>

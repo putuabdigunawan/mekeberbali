@@ -19,7 +19,7 @@ interface Props {
 
 const CardJobBali = ({ posts }: Props) => {
   return (
-    <div className="mb-8 md:col-6">
+    <div className="mb-8 md:col-6 px-3">
       <div className="rounded-xl bg-white p-5 shadow-lg lg:p-10">
         <h3 className="h4">
           <a href={`/lowongan/${posts.slug}`}>{posts.title}</a>

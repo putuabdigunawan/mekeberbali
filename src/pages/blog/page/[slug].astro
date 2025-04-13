@@ -11,19 +11,23 @@ import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getSinglePage("blog"); // ambil dulu post
-  const totalPages = Math.ceil(posts.length / config.settings.pagination); //
+  const posts = await getSinglePage("blog");
+  const recentPost = posts.filter((item) => !item.data.featured);
+  const totalPages = Math.ceil(recentPost.length / config.settings.pagination);
   const paths = [];
 
-  for (let i = 1; i < totalPages; i++) {
+  for (let i = 1; i <= totalPages; i++) {
+    // Perbaikan: i dimulai dari 1 dan <= totalPages
     paths.push({
       params: {
-        slug: (i + 1).toString(),
+        slug: i.toString(), // Perbaikan: Langsung menggunakan i.toString()
       },
     });
   }
+
   return paths;
 }
+
 const blogIndex = (await getEntry("blog", "-index")) as CollectionEntry<"blog">;
 
 const { slug } = Astro.params;
@@ -35,9 +39,10 @@ const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
 const indexOfLastPost = currentPage * config.settings.pagination;
 const indexOfFirstPost = indexOfLastPost - config.settings.pagination;
 const currentPosts = recentPost.slice(indexOfFirstPost, indexOfLastPost);
+
 const page_data = {
   index_title: blogIndex.data.title,
-  slug: `page / ${slug}`,
+  slug: `page / ${slug}`, // Perbaikan: slug akan selalu ada karena getStaticPaths.
 };
 ---
 
