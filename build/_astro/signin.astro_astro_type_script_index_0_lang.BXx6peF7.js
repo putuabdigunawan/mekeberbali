@@ -1,1 +1,0 @@
-import{S as e,P as t,A as a}from"./autoplay.CLCisftt.js";/* empty css                       */document.addEventListener("astro:page-load",()=>{new e(".swiper-container",{modules:[t,a],spaceBetween:24,loop:!0,centeredSlides:!0,pagination:{el:".pagination",type:"bullets",clickable:!0},breakpoints:{768:{slidesPerView:1}}})});

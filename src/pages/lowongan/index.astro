@@ -18,10 +18,10 @@ import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 import JobCardBali from "@/layouts/function-components/JobCardBali";
 import postcss from "postcss";
-// const response = await fetch(
-//   "https://firstoffice.bliputuabdi.com/api/bali/lowongan"
-// );
-const response = await fetch("http://127.0.0.1:8000/api/bali/lowongan/");
+const response = await fetch(
+  "https://firstoffice.mekeber.com/api/bali/lowongan"
+);
+// const response = await fetch("http://127.0.0.1:8000/api/bali/lowongan/");
 const result = await response.json();
 const lowongan = result.data; // Asumsi array lowongan ada di dalam properti 'data'
 //console.log(lowongan);

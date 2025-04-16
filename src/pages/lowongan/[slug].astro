@@ -6,10 +6,10 @@ import CtaLowongan from "@/layouts/partials/CtaLowongan.astro";
 
 export async function getStaticPaths() {
   try {
-    // const response = await fetch(
-    //   "https://firstoffice.bliputuabdi.com/api/bali/lowongan"
-    // );
-    const response = await fetch("http://127.0.0.1:8000/api/bali/lowongan/");
+    const response = await fetch(
+      "https://firstoffice.mekeber.com/api/bali/lowongan"
+    );
+    // const response = await fetch("http://127.0.0.1:8000/api/bali/lowongan/");
     if (!response.ok) {
       console.error(
         "Error fetching lowongan untuk getStaticPaths:",
@@ -29,12 +29,12 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-// const responseDetail = await fetch(
-//   `https://firstoffice.bliputuabdi.com/api/bali/lowongan/${slug}`
-// );
 const responseDetail = await fetch(
-  `http://127.0.0.1:8000/api/bali/lowongan/${slug}`
+  `https://firstoffice.mekeber.com/api/bali/lowongan/${slug}`
 );
+// const responseDetail = await fetch(
+//   `http://127.0.0.1:8000/api/bali/lowongan/${slug}`
+// );
 const ambil = await responseDetail.json();
 const lowonganDetail = ambil.data;
 ---
