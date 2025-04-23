@@ -7,6 +7,8 @@ import { defineConfig } from "astro/config";
 import remarkCollapse from "remark-collapse";
 import remarkToc from "remark-toc";
 import config from "./src/config/config.json";
+import vercel from '@astrojs/vercel/serverless';
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +16,8 @@ export default defineConfig({
   base: config.site.base_path ? config.site.base_path : "/",
   trailingSlash: config.site.trailing_slash ? "always" : "never",
   vite: { plugins: [tailwindcss()] },
+  output: 'server', // ✅ Hybrid mode (Astro ≥ v2.5+)
+  adapter: vercel(), // Tidak perlu adapter jika tidak full
   integrations: [
     react(),
     sitemap({
@@ -56,5 +60,6 @@ export default defineConfig({
     extendDefaultPlugins: true,
   },
   // https://astro.build/config
-  outDir: './build',
+  // output: 'hybrid',
+  // outDir: './build',
 });
