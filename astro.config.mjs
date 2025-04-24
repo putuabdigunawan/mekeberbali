@@ -61,5 +61,5 @@ export default defineConfig({
   },
   // https://astro.build/config
   // output: 'hybrid',
-  outDir: './build',
+  // outDir: './build',
 });
