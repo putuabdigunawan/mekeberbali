@@ -1,5 +1,19 @@
 {
 	"version": 3,
+	"builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": ".astro/output",
+        "runtime": "nodejs20.x"  
+      }
+    },
+    {
+      "src": "src/pages/**/*.astro",  
+      "use": "@vercel/node"
+    }
+  ],
 	"routes": [
 		{
 			"src": "^/(.*)/$",
