@@ -17,7 +17,7 @@ export default defineConfig({
   trailingSlash: config.site.trailing_slash ? "always" : "never",
   vite: { plugins: [tailwindcss()] },
   output: 'server', // ✅ Hybrid mode (Astro ≥ v2.5+)
-  adapter: vercel(), // Tidak perlu adapter jika tidak full
+  adapter: vercel(),
   integrations: [
     react(),
     sitemap({
@@ -61,5 +61,5 @@ export default defineConfig({
   },
   // https://astro.build/config
   // output: 'hybrid',
-  // outDir: './build',
+  outDir: './build',
 });

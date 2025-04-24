@@ -1,0 +1,163 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"src": "^/(.*)/$",
+			"headers": {
+				"Location": "/$1"
+			},
+			"status": 308
+		},
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^/_astro/(.*)$",
+			"headers": {
+				"cache-control": "public, max-age=31536000, immutable"
+			},
+			"continue": true
+		},
+		{
+			"src": "^/_server-islands/([^/]+?)$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/_image$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/404$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/about$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/about1$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/bali$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/bisnis$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/blog/page/([^/]+?)$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/blog/([^/]+?)$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/blog$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/categories/([^/]+?)$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/categories$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/contact$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/features$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/how-it-works$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/index-ori$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/integrations/([^/]+?)$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/integrations$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/klinik$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/lowongan/page/([^/]+?)$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/lowongan/([^/]+?)contoh$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/lowongan/([^/]+?)$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/lowongan$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/lowonganbali/page/([^/]+?)$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/lowonganbali/([^/]+?)$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/lowonganbali$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/password-reset$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/pricing$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/publicholiday$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/signin$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/signup$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/support$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/([^/]+?)$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/.*$",
+			"dest": "_render",
+			"status": 404
+		}
+	]
+}

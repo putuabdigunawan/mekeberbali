@@ -3,9 +3,16 @@ import { markdownify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
 ---
 
-<section
-  class="bg-[url('./images/tech.jpg')] bg-cover bg-center bg-no-repeat w-full relative"
->
+<section class="bg-cover bg-center bg-no-repeat w-full relative">
+  <Image
+    height={90}
+    width={90}
+    src="/images/tech.jpg"
+    alt=""
+    class="w-full h-[380px] absolute"
+    fetchpriority="high"
+  />
+
   <div class="py-8 md:py-20 bg-stone-950/20 backdrop-blur-md">
     <div class="container">
       <div class="row items-center mt-10 mb-5">
